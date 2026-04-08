@@ -1,0 +1,140 @@
+GIT COMMIT – SIMPLE EXPLANATION (WITH EXAMPLE)
+
+--------------------------------------------------
+WHAT IS GIT COMMIT?
+--------------------------------------------------
+Git commit is used to save changes to the repository.
+
+In simple words:
+It takes a snapshot of your staged changes and stores 
+them permanently in Git history.
+
+--------------------------------------------------
+WHY USE COMMIT?
+--------------------------------------------------
+1. Save progress of your work
+2. Track changes over time
+3. Create version history
+4. Enable rollback if needed
+
+--------------------------------------------------
+BASIC IDEA
+--------------------------------------------------
+Working Directory → Staging Area → Repository
+
+Only staged files are included in a commit.
+
+--------------------------------------------------
+STEP-BY-STEP EXAMPLE
+--------------------------------------------------
+
+Step 1: Create a file
+
+file.txt → "Hello"
+
+Step 2: Check status
+
+Command:
+git status
+
+Output:
+file.txt (untracked)
+
+Step 3: Add file to staging
+
+Command:
+git add file.txt
+
+Step 4: Commit changes
+
+Command:
+git commit -m "Initial commit"
+
+Now Git saves snapshot
+
+--------------------------------------------------
+VISUAL REPRESENTATION
+--------------------------------------------------
+
+Before commit:
+
+Working Directory:
+file.txt (Hello)
+
+After commit:
+
+A (Initial commit)
+
+--------------------------------------------------
+ADDING MORE CHANGES
+--------------------------------------------------
+
+Step 5: Modify file
+
+file.txt → "Hello World"
+
+Step 6: Add and commit again
+
+git add file.txt
+git commit -m "Updated file"
+
+Now history:
+
+A --- B
+
+A = Initial commit
+B = Updated file
+
+--------------------------------------------------
+COMMIT MESSAGE
+--------------------------------------------------
+A commit must have a message describing the change.
+
+Example:
+"Fix login bug"
+"Add user authentication"
+"Update README"
+
+--------------------------------------------------
+COMMON COMMANDS
+--------------------------------------------------
+
+Commit staged changes:
+git commit -m "message"
+
+Add + commit shortcut:
+git commit -am "message"
+(Note: works only for tracked files)
+
+Edit last commit message:
+git commit --amend
+
+View commits:
+git log
+
+--------------------------------------------------
+WHAT HAPPENS INTERNALLY?
+--------------------------------------------------
+1. Git takes snapshot of staged files
+2. Assigns a unique commit hash
+3. Links commit to previous commit
+4. Stores author, date, and message
+
+--------------------------------------------------
+IMPORTANT NOTES
+--------------------------------------------------
+1. Commit only staged files
+2. Each commit is permanent (unless rewritten)
+3. Good messages are important for teams
+
+--------------------------------------------------
+SUMMARY
+--------------------------------------------------
+- Commit = save snapshot of changes
+- Requires staging (git add)
+- Builds project history
+- Each commit has unique ID
+
+--------------------------------------------------
+END
+--------------------------------------------------
