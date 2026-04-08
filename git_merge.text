@@ -1,0 +1,155 @@
+GIT MERGE – SIMPLE EXPLANATION (WITH EXAMPLE)
+
+--------------------------------------------------
+WHAT IS GIT MERGE?
+--------------------------------------------------
+Git merge is used to combine changes from one branch 
+into another branch.
+
+In simple words:
+It joins two branches together and keeps their history.
+
+--------------------------------------------------
+WHY USE MERGE?
+--------------------------------------------------
+1. Combine feature work into main branch
+2. Preserve full history of both branches
+3. Safe for shared/public branches
+
+--------------------------------------------------
+BASIC IDEA
+--------------------------------------------------
+Two branches exist separately:
+
+A---B---C (main)
+         \
+          D---E (feature)
+
+After merge:
+
+A---B---C-------M (main)
+         \     /
+          D---E (feature)
+
+M = Merge Commit
+
+--------------------------------------------------
+STEP-BY-STEP EXAMPLE
+--------------------------------------------------
+
+Step 1: Initial commits
+
+main branch:
+A --- B --- C
+
+feature branch created from C:
+A --- B --- C
+               \
+                D --- E
+
+
+Step 2: Switch to main branch
+
+Command:
+git checkout main
+
+
+Step 3: Merge feature into main
+
+Command:
+git merge feature
+
+
+Step 4: Final result
+
+A --- B --- C -------- M
+               \      /
+                D --- E
+
+M is a merge commit that combines both histories
+
+--------------------------------------------------
+FAST-FORWARD MERGE
+--------------------------------------------------
+If no new commits in main:
+
+Before:
+A --- B --- C (main)
+               \
+                D --- E (feature)
+
+Command:
+git merge feature
+
+After (no merge commit):
+
+A --- B --- C --- D --- E (main)
+
+This is called FAST-FORWARD merge
+
+--------------------------------------------------
+WHAT HAPPENS INTERNALLY?
+--------------------------------------------------
+1. Git finds common ancestor
+2. Combines changes from both branches
+3. Creates a merge commit (if needed)
+
+--------------------------------------------------
+MERGE CONFLICT
+--------------------------------------------------
+Happens when same file/line is changed in both branches
+
+Example:
+main changes line → "Hello World"
+feature changes same line → "Hello Git"
+
+Git cannot decide → conflict occurs
+
+--------------------------------------------------
+HOW TO RESOLVE CONFLICT
+--------------------------------------------------
+1. Open conflicted file
+2. Edit and fix manually
+3. Add file:
+   git add filename
+4. Complete merge:
+   git commit
+
+--------------------------------------------------
+COMMON COMMANDS
+--------------------------------------------------
+
+Merge branch into current branch:
+git merge feature
+
+Abort merge:
+git merge --abort
+
+Check status:
+git status
+
+--------------------------------------------------
+MERGE VS REBASE (SHORT)
+--------------------------------------------------
+
+MERGE:
+- Keeps history
+- Adds merge commit
+- Safe for teams
+
+REBASE:
+- Rewrites history
+- No merge commit
+- Cleaner but risky if shared
+
+--------------------------------------------------
+SUMMARY
+--------------------------------------------------
+- Merge = combine branches
+- Keeps full history
+- May create merge commit
+- Safe for shared branches
+
+--------------------------------------------------
+END
+--------------------------------------------------
