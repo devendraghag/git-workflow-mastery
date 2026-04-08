@@ -1,0 +1,100 @@
+GIT REVERT - EXPLANATION AND EXAMPLES
+
+---
+
+1. WHAT IS GIT REVERT?
+
+git revert is used to undo a specific commit by creating a new commit.
+It does NOT delete history. Instead, it adds a new commit that reverses the changes.
+
+---
+
+2. WHY USE GIT REVERT?
+
+* Safe for shared/public repositories
+* Maintains commit history
+* Used when changes are already pushed
+
+---
+
+3. BASIC SYNTAX
+
+git revert <commit-id>
+
+---
+
+4. EXAMPLE
+
+Step 1: Check commit history
+git log --oneline
+
+Output:
+a1b2c3d Added login feature
+d4e5f6g Fixed bug
+h7i8j9k Initial commit
+
+Step 2: Revert a commit
+git revert a1b2c3d
+
+Result:
+
+* A new commit is created
+* Login feature changes are undone
+
+---
+
+5. REVERT LAST COMMIT
+
+git revert HEAD
+
+---
+
+6. REVERT MULTIPLE COMMITS
+
+git revert HEAD~3..HEAD
+
+Explanation:
+Reverts last 3 commits
+
+---
+
+7. REVERT WITHOUT AUTO COMMIT
+
+git revert -n <commit-id>
+
+Explanation:
+
+* Applies changes but does not commit
+* Useful for combining multiple reverts
+
+---
+
+8. DIFFERENCE BETWEEN REVERT AND RESET
+
+git revert:
+
+* Safe
+* Keeps history
+* Creates new commit
+
+git reset:
+
+* Dangerous (can delete history)
+* Rewrites commits
+
+---
+
+9. REAL WORLD USE CASE
+
+If a bug is introduced in production:
+
+* Use git revert to safely undo the commit
+* Push the revert commit
+
+---
+
+10. INTERVIEW ONE-LINER
+
+git revert is used to undo changes by creating a new commit without removing existing history.
+
+---
