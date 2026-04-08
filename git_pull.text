@@ -1,0 +1,147 @@
+==============================
+GIT PULL – SIMPLE EXPLANATION
+==============================
+
+git pull is used to get latest changes from remote repository.
+
+It means:
+"download + merge changes from remote"
+
+
+------------------------------
+WHAT HAPPENS DURING PULL?
+------------------------------
+
+git pull = git fetch + git merge
+
+- fetch → downloads changes
+- merge → applies changes to current branch
+
+
+------------------------------
+SYNTAX
+------------------------------
+
+git pull <remote> <branch>
+
+Example:
+git pull origin main
+
+
+------------------------------
+COMMON COMMANDS
+------------------------------
+
+1. Pull latest changes
+
+git pull
+
+- pulls from default remote + branch
+
+
+------------------------------
+
+2. Pull from specific branch
+
+git pull origin main
+
+- pulls main branch from origin
+
+
+------------------------------
+
+3. Pull with rebase (clean history)
+
+git pull --rebase
+
+- avoids merge commits
+- keeps linear history
+
+
+------------------------------
+EXAMPLE
+------------------------------
+
+Remote (GitHub):
+
+A → B → C
+
+
+Local:
+
+A → B (HEAD)
+
+
+------------------------------
+Step 1:
+Run pull
+
+git pull origin main
+
+
+Step 2:
+Result:
+
+A → B → C (HEAD)
+
+- new commit C added to local
+
+
+------------------------------
+MERGE CONFLICT EXAMPLE
+------------------------------
+
+If same file changed in both:
+
+git pull
+
+Output:
+CONFLICT (content): conflict in file.txt
+
+
+------------------------------
+Step to resolve
+------------------------------
+
+1. Open file and fix conflict
+2. Add file
+
+git add file.txt
+
+3. Commit
+
+git commit -m "resolved conflict"
+
+
+------------------------------
+REAL SCENARIO
+------------------------------
+
+Team member pushes new code.
+
+Before starting work:
+
+git pull
+
+- get latest updates
+- avoid conflicts later
+
+
+------------------------------
+IMPORTANT
+------------------------------
+
+- always pull before pushing
+- may cause merge conflicts
+- use rebase for cleaner history
+
+
+------------------------------
+SUMMARY
+------------------------------
+
+git pull                → fetch + merge
+git pull origin main    → pull specific branch
+git pull --rebase       → rebase instead of merge
+
+==============================
