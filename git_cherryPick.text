@@ -1,0 +1,143 @@
+==============================
+GIT CHERRY-PICK – SIMPLE EXPLANATION
+==============================
+
+git cherry-pick is used to copy a specific commit 
+from one branch and apply it to another branch.
+
+It means:
+"take this one commit and apply it here"
+
+
+------------------------------
+WHY USE CHERRY-PICK?
+------------------------------
+
+- apply bug fix to another branch
+- reuse specific commit without merging
+- avoid bringing full branch changes
+
+
+------------------------------
+SYNTAX
+------------------------------
+
+git cherry-pick <commit_id>
+
+
+------------------------------
+COMMON COMMANDS
+------------------------------
+
+1. Apply single commit
+
+git cherry-pick abc123
+
+- copies commit abc123 to current branch
+
+
+------------------------------
+
+2. Apply multiple commits
+
+git cherry-pick abc123 def456
+
+- applies both commits
+
+
+------------------------------
+
+3. Apply range of commits
+
+git cherry-pick A..D
+
+- applies commits between A and D
+
+
+------------------------------
+
+4. Continue after conflict
+
+git cherry-pick --continue
+
+- after resolving conflicts
+
+
+------------------------------
+
+5. Abort cherry-pick
+
+git cherry-pick --abort
+
+- cancel operation
+
+
+------------------------------
+EXAMPLE
+------------------------------
+
+Branch structure:
+
+main:
+A → B → C
+
+feature:
+A → B → D
+
+
+------------------------------
+Step 1:
+Switch to main
+
+git checkout main
+
+
+Step 2:
+Pick commit from feature
+
+git cherry-pick D
+
+
+Step 3:
+Result:
+
+main:
+A → B → C → D
+
+- only commit D added
+- no full merge of feature branch
+
+
+------------------------------
+REAL SCENARIO
+------------------------------
+
+You fixed a bug in feature branch.
+
+Now you want same fix in main branch
+without merging whole feature branch.
+
+Use:
+
+git cherry-pick <commit_id>
+
+
+------------------------------
+IMPORTANT
+------------------------------
+
+- creates a new commit (different ID)
+- may cause conflicts
+- use carefully to avoid duplicate changes
+
+
+------------------------------
+SUMMARY
+------------------------------
+
+git cherry-pick commit_id   → apply specific commit
+git cherry-pick A..B        → apply range
+git cherry-pick --continue  → after conflict
+git cherry-pick --abort     → cancel
+
+==============================
