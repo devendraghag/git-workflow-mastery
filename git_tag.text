@@ -1,0 +1,171 @@
+==============================
+GIT TAG – SIMPLE EXPLANATION
+==============================
+
+git tag is used to mark a specific commit.
+
+It means:
+"label this commit (usually for versions like v1.0)"
+
+
+------------------------------
+WHY USE TAG?
+------------------------------
+
+- mark release versions (v1.0, v2.0)
+- easily return to important commits
+- track milestones
+
+
+------------------------------
+TYPES OF TAGS
+------------------------------
+
+1. Lightweight tag
+- simple pointer to commit
+
+2. Annotated tag
+- includes message, author, date
+
+
+------------------------------
+COMMANDS
+------------------------------
+
+1. Create lightweight tag
+
+git tag v1.0
+
+- tags current commit
+
+
+------------------------------
+
+2. Create annotated tag
+
+git tag -a v1.0 -m "version 1.0 release"
+
+- recommended for releases
+
+
+------------------------------
+
+3. Tag specific commit
+
+git tag v1.0 abc123
+
+- tags a particular commit
+
+
+------------------------------
+
+4. List tags
+
+git tag
+
+- shows all tags
+
+
+------------------------------
+
+5. Show tag details
+
+git show v1.0
+
+- shows commit + tag info
+
+
+------------------------------
+
+6. Delete tag (local)
+
+git tag -d v1.0
+
+- removes tag locally
+
+
+------------------------------
+
+7. Push tag to remote
+
+git push origin v1.0
+
+- sends tag to GitHub
+
+
+------------------------------
+
+8. Push all tags
+
+git push origin --tags
+
+- pushes all tags
+
+
+------------------------------
+EXAMPLE
+------------------------------
+
+Step 1:
+Make commits
+
+A → B → C (HEAD)
+
+
+Step 2:
+Create tag
+
+git tag v1.0
+
+
+Step 3:
+Now:
+
+A → B → C (HEAD, v1.0)
+
+- commit C marked as version v1.0
+
+
+Step 4:
+Check tags
+
+git tag
+
+Output:
+v1.0
+
+
+------------------------------
+REAL SCENARIO
+------------------------------
+
+After completing project version:
+
+git tag -a v1.0 -m "first release"
+
+- marks stable version
+- easy to share and track
+
+
+------------------------------
+IMPORTANT
+------------------------------
+
+- tags do NOT move (fixed to commit)
+- unlike branches (which move)
+
+- use annotated tags for production
+
+
+------------------------------
+SUMMARY
+------------------------------
+
+git tag v1.0                → create tag
+git tag -a v1.0 -m "msg"    → annotated tag
+git tag                     → list tags
+git show v1.0               → view tag
+git tag -d v1.0             → delete tag
+git push origin v1.0        → push tag
+
+==============================
