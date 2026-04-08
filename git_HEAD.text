@@ -1,0 +1,161 @@
+==============================
+GIT HEAD – SIMPLE EXPLANATION
+==============================
+
+HEAD is a pointer in Git.
+
+It means:
+"current position in the repository"
+
+
+------------------------------
+WHAT HEAD POINTS TO
+------------------------------
+
+- usually points to latest commit of current branch
+- tells Git where you are working
+
+
+------------------------------
+BASIC IDEA
+------------------------------
+
+HEAD → current branch → latest commit
+
+Example:
+
+HEAD → main → commit123
+
+
+------------------------------
+COMMANDS
+------------------------------
+
+1. Check current HEAD commit
+
+git log --oneline
+
+- top commit is where HEAD is pointing
+
+
+------------------------------
+
+2. See HEAD reference
+
+cat .git/HEAD
+
+Output:
+ref: refs/heads/main
+
+- shows current branch
+
+
+------------------------------
+
+3. Move HEAD (checkout another branch)
+
+git checkout feature1
+
+- HEAD now points to feature1 branch
+
+
+------------------------------
+
+4. Detached HEAD (important concept)
+
+git checkout <commit_id>
+
+- HEAD points directly to commit
+- not attached to any branch
+
+
+------------------------------
+
+5. Go back to branch
+
+git checkout main
+
+- re-attaches HEAD to branch
+
+
+------------------------------
+EXAMPLE
+------------------------------
+
+Step 1:
+Check branch
+
+git branch
+
+Output:
+* main
+
+
+Step 2:
+Make commit
+
+git add .
+git commit -m "first commit"
+
+
+Step 3:
+Check log
+
+git log --oneline
+
+Output:
+abc123 first commit
+
+HEAD → main → abc123
+
+
+Step 4:
+Create new branch
+
+git checkout -b feature1
+
+
+Step 5:
+Now:
+
+HEAD → feature1 → latest commit
+
+
+------------------------------
+DETACHED HEAD EXAMPLE
+------------------------------
+
+Step 1:
+Checkout old commit
+
+git checkout abc123
+
+
+Step 2:
+Now:
+
+HEAD → abc123 (no branch)
+
+- you are in detached HEAD state
+
+
+------------------------------
+IMPORTANT
+------------------------------
+
+- HEAD moves when you switch branches
+- HEAD changes after every commit
+- avoid working long in detached HEAD
+
+
+------------------------------
+SUMMARY
+------------------------------
+
+HEAD → current position
+HEAD → current branch latest commit
+
+git checkout branch     → move HEAD
+git checkout commit_id  → detached HEAD
+
+==============================
