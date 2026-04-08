@@ -27,7 +27,7 @@ Each `git_*.text` file focuses on one command and follows a consistent style:
 - `git_clone.text` — copy an existing repository
 - `git_status.text` — inspect working tree state
 - `git_add.text` — stage changes
-- `git_commit` *(covered partly in command guides; dedicated file can be added)*
+- `git_commit.text` — create snapshots with meaningful messages
 - `git_push.text` — send commits to remote
 - `git_pull.text` — fetch + merge from remote
 - `git_fetch.text` — download remote updates without merging
@@ -37,15 +37,18 @@ Each `git_*.text` file focuses on one command and follows a consistent style:
 - `git_checkout.text` — switch branches/restore states
 - `git_HEAD.text` — understand HEAD and detached HEAD
 - `git_stash.text` — temporarily save uncommitted work
+- `git_merge.text` — combine branch histories
+- `git_rebase.text` — replay commits for cleaner history
 
 ### History and recovery
 - `git_revert.text` — undo via new commit
-- `git_reset.text` — rewrite local history *(currently to be completed)*
-- `git_ammend.text` — amend last commit *(filename typo kept for compatibility; see roadmap)*
-- `git_cherryPick.text` — apply specific commit from another branch
+- `git_reset.text` — rewrite local history safely
+- `git_amend.text` — amend last commit
+- `git_reflog.text` — recover lost commit references
+- `git_cheeryPick.text` — apply specific commit from another branch *(filename typo currently kept for compatibility)*
 - `git_tag.text` — label important commits/releases
 - `git_prune.text` — clean unreachable Git objects
-- `git_clean.text` — remove untracked files *(currently to be completed)*
+- `git_clean.text` — remove untracked files safely
 
 ## Suggested Learning Path
 
@@ -58,20 +61,43 @@ If you are new to Git, follow this order:
 5. `git_branch` + `git_checkout`
 6. `git_fetch` + `git_pull` + `git_push`
 7. `git_stash`
-8. `git_revert` + `git_reset`
-9. `git_cherry-pick` + `git_tag`
-10. cleanup (`git_clean`, `git_prune`)
+8. `git_merge` + `git_rebase`
+9. `git_revert` + `git_reset` + `git_reflog`
+10. `git_cherry-pick` + `git_tag`
+11. cleanup (`git_clean`, `git_prune`)
 
-## Current Gaps / Roadmap
+## Learning Path Outcomes
+
+After completing this repository's learning path, you should be able to:
+
+- Initialize and clone repositories with confidence
+- Track file changes, stage updates, and create clean commits
+- Work with branches for features and bug fixes
+- Sync safely with remotes using fetch, pull, and push
+- Recover from mistakes using revert, reset, stash, and amend
+- Recover "lost" work using reflog-based workflows
+- Apply targeted fixes using cherry-pick and tag important milestones
+- Clean local workspaces safely with preview-first commands
+- Choose safer options for potentially destructive Git operations
+
+## What to Add / Update Next (Prioritized Roadmap)
 
 Planned improvements:
-- Fill missing content in:
-  - `git_clean.text`
-  - `git_reset.text`
-- Rename `git_ammend.text` to `git_amend.text` (with compatibility note)
-- Add a dedicated `git_commit` guide
 - Add mini hands-on labs in an `examples/` folder
 - Add quick cheat sheet in Markdown format
+- Rename `git_cheeryPick.text` to `git_cherry_pick.text` and keep a compatibility note
+- Add diagrams for merge/rebase/reflog flows
+- Add beginner quiz sections at the end of each guide (3–5 questions)
+- Add `.md` versions of guides for better GitHub rendering and discoverability
+
+## Repo Quality Checklist (for contributors and maintainers)
+
+Before merging documentation updates, verify:
+- Every command file has at least one realistic, copy-paste-ready example
+- Risky commands include preview/safe mode before destructive mode
+- File names match README references exactly
+- Suggested workflows do not contradict other command guides
+- Grammar/spelling passes a quick proofreading sweep
 
 ## How to use this repository
 
