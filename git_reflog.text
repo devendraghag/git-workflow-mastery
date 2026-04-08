@@ -1,0 +1,124 @@
+GIT REFLOG – SIMPLE EXPLANATION (WITH EXAMPLE)
+
+--------------------------------------------------
+WHAT IS GIT REFLOG?
+--------------------------------------------------
+Git reflog is a log of all actions performed in your 
+local repository (like commits, checkouts, resets, rebases).
+
+In simple words:
+It tracks every move your HEAD has made.
+
+--------------------------------------------------
+WHY USE REFLOG?
+--------------------------------------------------
+1. Recover deleted commits
+2. Undo mistakes (reset, rebase, checkout)
+3. Find lost work
+
+--------------------------------------------------
+BASIC IDEA
+--------------------------------------------------
+Even if a commit is not visible in git log,
+Git still keeps a reference in reflog.
+
+--------------------------------------------------
+EXAMPLE SCENARIO
+--------------------------------------------------
+
+Step 1: Initial commits
+
+A --- B --- C (main)
+
+Step 2: Add new commit
+
+A --- B --- C --- D
+
+Step 3: Accidentally reset
+
+Command:
+git reset --hard HEAD~1
+
+Now branch becomes:
+
+A --- B --- C
+
+Commit D is "lost" (not visible)
+
+--------------------------------------------------
+USING REFLOG TO RECOVER
+--------------------------------------------------
+
+Command:
+git reflog
+
+Output (example):
+
+abc123 HEAD@{0}: reset: moving to HEAD~1
+def456 HEAD@{1}: commit: Added feature D
+ghi789 HEAD@{2}: commit: Added C
+
+Here:
+HEAD@{1} = commit D
+
+--------------------------------------------------
+RECOVER LOST COMMIT
+--------------------------------------------------
+
+Command:
+git reset --hard def456
+
+OR
+
+git checkout def456
+
+Now commit D is restored
+
+--------------------------------------------------
+REFLOG ENTRY FORMAT
+--------------------------------------------------
+
+<commit_hash> HEAD@{index}: action
+
+Example:
+def456 HEAD@{1}: commit: Added feature D
+
+--------------------------------------------------
+COMMON COMMANDS
+--------------------------------------------------
+
+Show reflog:
+git reflog
+
+Show specific entry:
+git show HEAD@{1}
+
+Reset to previous state:
+git reset --hard HEAD@{1}
+
+--------------------------------------------------
+IMPORTANT NOTES
+--------------------------------------------------
+1. Reflog is LOCAL (not shared with others)
+2. Entries expire after some time (default ~90 days)
+3. Useful after rebase, reset, or accidental deletes
+
+--------------------------------------------------
+REAL-LIFE USE CASES
+--------------------------------------------------
+- Undo accidental git reset --hard
+- Recover deleted branch commits
+- Find commit before rebase
+- Restore overwritten history
+
+--------------------------------------------------
+SUMMARY
+--------------------------------------------------
+- Reflog = history of HEAD movements
+- Helps recover lost commits
+- Works even if commit not in git log
+- Very powerful recovery tool
+
+--------------------------------------------------
+END
+--------------------------------------------------
