@@ -1,0 +1,135 @@
+GIT CLEAN – EXPLANATION WITH EXAMPLES
+
+---
+
+## WHAT IS `git clean`?
+
+`git clean` is a Git command used to remove untracked files from your working directory.
+
+Untracked files = files that are not being tracked by Git (i.e., not added using `git add`).
+
+IMPORTANT:
+
+* It does NOT remove tracked files.
+* It is mainly used to clean up unwanted files like build outputs, temp files, etc.
+
+---
+
+## BASIC SYNTAX
+
+git clean [options]
+
+---
+
+## COMMON OPTIONS
+
+1. -n (Dry Run)
+   Shows what will be deleted WITHOUT actually deleting.
+
+Example:
+git clean -n
+
+Output:
+Would remove file1.txt
+Would remove temp/
+
+---
+
+2. -f (Force)
+   Actually deletes the files.
+
+Example:
+git clean -f
+
+NOTE:
+Git will NOT run clean unless you use -f (for safety).
+
+---
+
+3. -d (Directories)
+   Removes untracked directories as well.
+
+Example:
+git clean -fd
+
+---
+
+4. -x
+   Removes ignored files too (like files in .gitignore).
+
+Example:
+git clean -fx
+
+---
+
+5. -i (Interactive Mode)
+   Lets you choose what to delete step-by-step.
+
+Example:
+git clean -i
+
+---
+
+## REAL-LIFE EXAMPLE
+
+## STEP 1: Project folder contains:
+
+tracked_file.txt       (tracked by Git)
+temp.log               (untracked)
+build/                 (untracked folder)
+
+## STEP 2: Check what will be deleted
+
+git clean -n
+
+Output:
+Would remove temp.log
+Would remove build/
+
+## STEP 3: Delete untracked files and folders
+
+git clean -fd
+
+Result:
+temp.log → deleted
+build/   → deleted
+tracked_file.txt → remains safe
+
+---
+
+## WHEN TO USE `git clean`
+
+* Remove build files after compilation
+* Clean project before fresh install
+* Remove unwanted temp files
+* Reset working directory (along with git reset)
+
+---
+
+## WARNING
+
+* This command permanently deletes files
+* No undo (unless backup exists)
+
+SAFE PRACTICE:
+Always run:
+git clean -n
+before using:
+git clean -f
+
+---
+
+## SUMMARY
+
+git clean = removes untracked files
+
+Most common usage:
+git clean -fd
+
+Safe usage:
+git clean -n → preview
+git clean -fd → execute
+
+---
+
+## END
