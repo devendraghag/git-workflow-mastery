@@ -1,193 +1,153 @@
-### What is `git status`?
+==============================
+GIT STATUS – SIMPLE EXPLANATION
+==============================
 
-`git status` is a diagnostic command that shows the **current state of your working directory and staging area**.
-It tells you:
+git status is used to check the current state of your repository.
 
-* Which files are **untracked**
-* Which are **modified**
-* Which are **staged (ready to commit)**
+It means:
+"what is changed, staged, or not tracked?"
 
----
 
-## 🔧 Syntax
+------------------------------
+WHAT IT SHOWS
+------------------------------
 
-```bash
+- current branch name
+- modified files
+- staged files
+- untracked files
+
+
+------------------------------
+COMMAND
+------------------------------
+
 git status
-```
 
----
+- shows full status of repo
 
-## ✅ Example 1: Fresh repository
 
-```bash
-git init
+------------------------------
+OUTPUT TYPES
+------------------------------
+
+1. Untracked files
+
+file.txt
+
+- file exists but not added to Git
+
+
+------------------------------
+
+2. Modified files
+
+modified: file.txt
+
+- file changed but not added
+
+
+------------------------------
+
+3. Staged files
+
+changes to be committed:
+file.txt
+
+- ready for commit
+
+
+------------------------------
+
+4. Clean state
+
+nothing to commit, working tree clean
+
+- no changes
+
+
+------------------------------
+EXAMPLE
+------------------------------
+
+Step 1:
+Create file
+
+file1.txt
+
+
+Step 2:
+Check status
+
 git status
-```
 
-👉 Output:
-
-```bash
-On branch main
-
-No commits yet
-
-nothing to commit (create/copy files and use "git add" to track)
-```
-
-📌 Meaning:
-
-* Repo is empty
-* No files tracked yet
-
----
-
-## ✅ Example 2: Untracked file
-
-```bash
-echo "Hello" > file.txt
-git status
-```
-
-👉 Output:
-
-```bash
+Output:
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-    file.txt
-```
+file1.txt
 
-📌 Meaning:
 
-* Git sees the file but is **not tracking it yet**
+Step 3:
+Add file
 
----
+git add file1.txt
 
-## ✅ Example 3: Staging a file
 
-```bash
-git add file.txt
+Step 4:
+Check status
+
 git status
-```
 
-👉 Output:
-
-```bash
+Output:
 Changes to be committed:
-  new file:   file.txt
-```
+file1.txt
 
-📌 Meaning:
 
-* File is in **staging area**
-* Ready to commit
+Step 5:
+Modify file again
 
----
+(edit file1.txt)
 
-## ✅ Example 4: Modified file after commit
 
-```bash
-git commit -m "Initial commit"
-echo "New line" >> file.txt
+Step 6:
+Check status
+
 git status
-```
 
-👉 Output:
+Output:
+modified: file1.txt
 
-```bash
-Changes not staged for commit:
-  modified:   file.txt
-```
 
-📌 Meaning:
+------------------------------
+REAL SCENARIO
+------------------------------
 
-* File changed after last commit
-* Not yet staged
+Before committing code, always check:
 
----
+git status
 
-## ✅ Example 5: Full lifecycle (Important for interviews)
+- ensures correct files are added
+- avoids mistakes
 
-```bash
-git init
-echo "A" > file.txt
 
-git status         # Untracked
-git add file.txt
-git status         # Staged
+------------------------------
+IMPORTANT
+------------------------------
 
-git commit -m "Add file"
-git status         # Clean
+- use git status frequently
+- helps avoid wrong commits
+- shows exact state of project
 
-echo "B" >> file.txt
-git status         # Modified
-```
 
----
+------------------------------
+SUMMARY
+------------------------------
 
-## 📊 File States in Git (Core Concept)
+git status → check repo state
 
-| State     | Meaning                |
-| --------- | ---------------------- |
-| Untracked | New file, not in Git   |
-| Modified  | Changed but not staged |
-| Staged    | Ready for commit       |
-| Committed | Saved in history       |
+States:
+- untracked
+- modified
+- staged
+- clean
 
----
-
-## 🧠 Key Points (Interview Ready)
-
-* `git status` does **not change anything**, it only shows info
-* Helps track file lifecycle:
-  **Untracked → Staged → Committed**
-* Essential before every commit
-* Safe command (no risk)
-
----
-
-## 💡 Pro Tip
-
-Use short format:
-
-```bash
-git status -s
-```
-
-👉 Output:
-
-```bash
-?? file.txt   # untracked
-M  file.txt   # modified
-A  file.txt   # added
-```
-
----
-
-## 🚀 How to showcase in your GitHub repo (important for you)
-
-Create a file:
-
-```
-git-status.md
-```
-
-Then open PR with:
-
-### Title:
-
-```
-docs: add git status explanation with examples
-```
-
-### Description:
-
-Mention:
-
-* file states
-* lifecycle
-* examples
-
----
-
-If you want, next I can help you build:
-👉 `git add`, `git commit`, `git log` with same professional PR structure (interview-ready repo).
+==============================
