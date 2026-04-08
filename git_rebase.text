@@ -1,0 +1,130 @@
+GIT REBASE – SIMPLE EXPLANATION (WITH EXAMPLE)
+
+--------------------------------------------------
+WHAT IS GIT REBASE?
+--------------------------------------------------
+Git rebase is used to move or combine a sequence of commits 
+to a new base commit.
+
+In simple words:
+It rewrites your branch history so it looks like your work 
+was based on the latest code.
+
+--------------------------------------------------
+WHY USE REBASE?
+--------------------------------------------------
+1. Keeps history clean (no extra merge commits)
+2. Makes project timeline linear
+3. Easier to understand commit history
+
+--------------------------------------------------
+BASIC IDEA
+--------------------------------------------------
+Instead of merging branches like this:
+
+A---B---C (main)
+         \
+          D---E (feature)
+
+Rebase makes it:
+
+A---B---C---D'---E' (feature)
+
+(D and E are rewritten as D' and E')
+
+--------------------------------------------------
+STEP-BY-STEP EXAMPLE
+--------------------------------------------------
+
+Step 1: Create a repo and commits
+
+main branch:
+A --- B --- C
+
+feature branch created from B:
+A --- B
+         \
+          D --- E
+
+
+Step 2: main branch gets new commit
+
+main:
+A --- B --- C --- F
+
+feature:
+A --- B
+         \
+          D --- E
+
+
+Step 3: Rebase feature onto main
+
+Command:
+git checkout feature
+git rebase main
+
+Now Git moves D and E on top of F
+
+Result:
+
+A --- B --- C --- F --- D' --- E'
+
+--------------------------------------------------
+WHAT HAPPENS INTERNALLY?
+--------------------------------------------------
+1. Git temporarily removes commits D and E
+2. Moves feature branch to latest main (F)
+3. Re-applies D and E on top of F
+
+--------------------------------------------------
+REBASE VS MERGE
+--------------------------------------------------
+
+MERGE:
+A---B---C---F
+     \       \
+      D---E---M (merge commit)
+
+REBASE:
+A---B---C---F---D'---E'
+
+Merge → keeps history as-is (with extra commit)
+Rebase → rewrites history (clean line)
+
+--------------------------------------------------
+IMPORTANT NOTE
+--------------------------------------------------
+Do NOT rebase shared/public branches.
+
+Why?
+Because rebase rewrites history and can cause conflicts 
+for others working on the same branch.
+
+--------------------------------------------------
+COMMON COMMANDS
+--------------------------------------------------
+
+Rebase current branch onto main:
+git rebase main
+
+Rebase interactively (edit commits):
+git rebase -i HEAD~3
+
+Abort rebase:
+git rebase --abort
+
+Continue after conflict:
+git rebase --continue
+
+--------------------------------------------------
+SUMMARY
+--------------------------------------------------
+- Rebase = move commits to new base
+- Creates clean, linear history
+- Avoid on shared branches
+- Useful for local feature branches
+
+--------------------------------------------------
+END
+--------------------------------------------------
