@@ -1,0 +1,198 @@
+==============================
+GIT STASH – SIMPLE EXPLANATION
+==============================
+
+git stash is used to temporarily save your changes.
+
+It means:
+"keep changes aside without committing"
+
+
+------------------------------
+WHY USE STASH?
+------------------------------
+
+- switch branch without committing
+- save unfinished work
+- keep working directory clean
+
+
+------------------------------
+BASIC COMMAND
+------------------------------
+
+git stash
+
+- saves modified + staged changes
+- working directory becomes clean
+
+
+------------------------------
+COMMON COMMANDS
+------------------------------
+
+1. Save changes
+
+git stash
+
+- stores changes in stack
+- removes changes from files
+
+
+------------------------------
+
+2. Save with message
+
+git stash push -m "work in progress"
+
+- helps identify stash later
+
+
+------------------------------
+
+3. View stash list
+
+git stash list
+
+Output:
+stash@{0}
+stash@{1}
+
+- shows all saved stashes
+
+
+------------------------------
+
+4. Apply stash (keep in list)
+
+git stash apply
+
+- restores latest stash
+- stash still exists
+
+
+------------------------------
+
+5. Apply specific stash
+
+git stash apply stash@{1}
+
+- restores selected stash
+
+
+------------------------------
+
+6. Pop stash (apply + delete)
+
+git stash pop
+
+- restores latest stash
+- removes it from list
+
+
+------------------------------
+
+7. Delete stash
+
+git stash drop stash@{0}
+
+- deletes specific stash
+
+
+------------------------------
+
+8. Clear all stashes
+
+git stash clear
+
+- removes all stash data
+
+
+------------------------------
+EXAMPLE
+------------------------------
+
+Step 1:
+Modify file
+
+file.txt
+
+
+Step 2:
+Check status
+
+git status
+
+Output:
+modified: file.txt
+
+
+Step 3:
+Save changes
+
+git stash
+
+
+Step 4:
+Check status
+
+git status
+
+Output:
+working tree clean
+
+
+Step 5:
+Switch branch
+
+git checkout main
+
+
+Step 6:
+Bring back changes
+
+git stash pop
+
+
+------------------------------
+REAL SCENARIO
+------------------------------
+
+You are working on a feature but need to fix urgent bug.
+
+Instead of committing unfinished code:
+
+git stash
+
+- switch branch
+- fix bug
+- come back and apply stash
+
+
+------------------------------
+IMPORTANT
+------------------------------
+
+- stash does NOT include untracked files by default
+
+To include them:
+
+git stash -u
+
+
+- stash works like stack (LIFO)
+- latest stash is applied first
+
+
+------------------------------
+SUMMARY
+------------------------------
+
+git stash                 → save changes
+git stash list            → view stashes
+git stash apply           → apply stash
+git stash pop             → apply + remove
+git stash drop            → delete stash
+git stash clear           → delete all
+
+==============================
