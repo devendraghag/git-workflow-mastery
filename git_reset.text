@@ -1,0 +1,183 @@
+==============================
+GIT RESET – SIMPLE EXPLANATION
+==============================
+
+git reset is used to move HEAD to a previous commit.
+
+It affects:
+- commit history
+- staging area
+- working directory (depends on type)
+
+It means:
+"go back to previous state"
+
+
+------------------------------
+SYNTAX
+------------------------------
+
+git reset [--soft | --mixed | --hard] <commit_id>
+
+
+------------------------------
+TYPES OVERVIEW (TABLE)
+------------------------------
+
+TYPE   | COMMITS | STAGING AREA | WORKING FILES | DATA LOSS | USE CASE
+---------------------------------------------------------------------------
+soft   | removed | kept         | kept          | NO        | redo commit
+mixed  | removed | removed      | kept          | NO        | unstage files
+hard   | removed | removed      | removed       | YES       | full reset
+
+
+------------------------------
+DETAILED COMPARISON TABLE
+------------------------------
+
+FEATURE                | SOFT              | MIXED (default)   | HARD
+-----------------------------------------------------------------------------
+HEAD moves             | YES               | YES               | YES
+
+Commits removed        | YES               | YES               | YES
+
+Changes in staging     | KEPT (green)      | REMOVED           | REMOVED
+
+Changes in files       | KEPT              | KEPT              | DELETED
+
+Files color (status)   | GREEN (staged)    | RED (modified)    | CLEAN
+
+Untracked files        | SAFE              | SAFE              | SAFE
+
+Working directory      | NO CHANGE         | NO CHANGE         | RESET
+
+Can recommit easily    | YES               | YES (need add)    | NO
+
+Data loss risk         | NO                | NO                | YES
+
+git log                | moved back        | moved back        | moved back
+
+
+------------------------------
+EXAMPLE
+------------------------------
+
+Assume commits:
+
+A → B → C (HEAD)
+
+
+------------------------------
+1. SOFT RESET
+------------------------------
+
+git reset --soft B
+
+Result:
+
+HEAD → B
+
+- commit C removed
+- changes from C are still staged (green)
+
+You can directly commit again:
+
+git commit -m "new commit"
+
+
+------------------------------
+2. MIXED RESET (DEFAULT)
+------------------------------
+
+git reset B
+
+OR
+
+git reset --mixed B
+
+Result:
+
+HEAD → B
+
+- commit C removed
+- changes are in working directory (not staged)
+
+You need to add again:
+
+git add .
+git commit -m "new commit"
+
+
+------------------------------
+3. HARD RESET
+------------------------------
+
+git reset --hard B
+
+Result:
+
+HEAD → B
+
+- commit C removed
+- all changes deleted permanently
+
+Working directory becomes exactly like commit B
+
+
+------------------------------
+VISUAL FLOW
+------------------------------
+
+Before:
+
+A → B → C (HEAD)
+
+
+After SOFT:
+
+A → B (HEAD)
+Changes from C → staged
+
+
+After MIXED:
+
+A → B (HEAD)
+Changes from C → not staged
+
+
+After HARD:
+
+A → B (HEAD)
+Changes from C → deleted
+
+
+------------------------------
+IMPORTANT
+------------------------------
+
+- soft = safest
+- mixed = default behavior
+- hard = dangerous (data loss)
+
+- untracked files are NOT deleted by reset
+(use git clean for that)
+
+
+------------------------------
+SUMMARY
+------------------------------
+
+git reset --soft commit_id   → keep changes staged
+git reset --mixed commit_id  → keep changes unstaged
+git reset --hard commit_id   → delete everything
+
+==============================
+---------------------------------------------------------
+BASIC DIFFERENCE
+---------------------------------------------------------
+
+git reset --hard <commit_id>
+→ go to a specific commit (exact)
+
+git reset --hard HEAD~3
+→ go back 3 commits from current HEAD (relative)
