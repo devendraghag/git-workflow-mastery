@@ -1,0 +1,158 @@
+==============================
+GIT FETCH – SIMPLE EXPLANATION
+==============================
+
+git fetch is used to download changes from remote repository
+WITHOUT applying them to your working code.
+
+It means:
+"check what’s new, but don’t merge yet"
+
+
+------------------------------
+WHAT HAPPENS DURING FETCH?
+------------------------------
+
+- downloads new commits
+- updates remote tracking branches
+- does NOT change your current branch
+
+
+------------------------------
+SYNTAX
+------------------------------
+
+git fetch <remote>
+
+Example:
+git fetch origin
+
+
+------------------------------
+COMMON COMMANDS
+------------------------------
+
+1. Fetch from default remote
+
+git fetch
+
+- fetches all updates from origin
+
+
+------------------------------
+
+2. Fetch specific branch
+
+git fetch origin main
+
+- downloads only main branch changes
+
+
+------------------------------
+
+3. Fetch all remotes
+
+git fetch --all
+
+- fetches from all configured remotes
+
+
+------------------------------
+EXAMPLE
+------------------------------
+
+Remote (GitHub):
+
+A → B → C
+
+
+Local:
+
+A → B (HEAD)
+
+
+------------------------------
+Step 1:
+Run fetch
+
+git fetch origin
+
+
+Step 2:
+Result:
+
+Local branch:
+A → B (HEAD)
+
+Remote tracking branch:
+origin/main → C
+
+- your code is NOT updated yet
+- changes are stored separately
+
+
+------------------------------
+CHECK FETCHED DATA
+------------------------------
+
+git log origin/main
+
+- see new commits without merging
+
+
+------------------------------
+APPLY FETCHED CHANGES
+------------------------------
+
+git merge origin/main
+
+OR
+
+git pull (fetch + merge)
+
+
+------------------------------
+FETCH vs PULL
+------------------------------
+
+FEATURE        | FETCH               | PULL
+------------------------------------------------
+Downloads code | YES                 | YES
+Auto merge     | NO                  | YES
+Safe           | MORE SAFE           | LESS SAFE
+Control        | FULL CONTROL        | AUTOMATIC
+
+
+------------------------------
+REAL SCENARIO
+------------------------------
+
+You want to check updates before applying them.
+
+Use:
+
+git fetch
+
+- review changes
+- then merge manually
+
+
+------------------------------
+IMPORTANT
+------------------------------
+
+- fetch never changes your files
+- safe operation
+- good practice before merge
+
+
+------------------------------
+SUMMARY
+------------------------------
+
+git fetch             → download changes
+git fetch origin      → fetch from origin
+git fetch --all       → fetch all remotes
+git merge origin/main → apply changes
+
+==============================
