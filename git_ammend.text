@@ -1,0 +1,155 @@
+==============================
+GIT AMEND – SIMPLE EXPLANATION
+==============================
+
+git commit --amend is used to modify the last commit.
+
+It means:
+"change the last commit (message or content)"
+
+
+------------------------------
+WHY USE AMEND?
+------------------------------
+
+- fix commit message
+- add missed changes to last commit
+- avoid creating extra commits
+
+
+------------------------------
+SYNTAX
+------------------------------
+
+git commit --amend
+
+- opens editor to update message
+
+
+------------------------------
+
+git commit --amend -m "new message"
+
+- directly update commit message
+
+
+------------------------------
+COMMON USE CASES
+------------------------------
+
+1. Change last commit message
+
+git commit --amend -m "updated message"
+
+- replaces old message
+
+
+------------------------------
+
+2. Add new changes to last commit
+
+Step 1:
+Modify file
+
+Step 2:
+Add file
+
+git add file.txt
+
+Step 3:
+Amend commit
+
+git commit --amend
+
+- updates previous commit with new changes
+
+
+------------------------------
+
+3. Amend without changing message
+
+git commit --amend --no-edit
+
+- keeps same message
+- updates content only
+
+
+------------------------------
+EXAMPLE
+------------------------------
+
+Step 1:
+Make commit
+
+git add .
+git commit -m "first commit"
+
+
+Step 2:
+Forgot to add file2.txt
+
+Step 3:
+Add missing file
+
+git add file2.txt
+
+
+Step 4:
+Amend commit
+
+git commit --amend
+
+
+Result:
+
+- old commit replaced
+- new commit includes file2.txt
+
+
+------------------------------
+BEFORE vs AFTER
+------------------------------
+
+Before:
+
+A → B (HEAD)
+
+After amend:
+
+A → B' (HEAD)
+
+- B is replaced by B'
+- commit ID changes
+
+
+------------------------------
+IMPORTANT
+------------------------------
+
+- only modifies LAST commit
+- creates new commit ID
+- do NOT amend pushed commits (can break history)
+
+
+------------------------------
+REAL SCENARIO
+------------------------------
+
+You commit quickly and miss a file.
+
+Instead of new commit:
+
+git commit --amend
+
+- keeps history clean
+
+
+------------------------------
+SUMMARY
+------------------------------
+
+git commit --amend            → edit last commit
+git commit --amend -m "msg"   → change message
+git commit --amend --no-edit  → keep message
+
+==============================
