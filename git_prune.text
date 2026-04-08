@@ -1,0 +1,167 @@
+==============================
+GIT PRUNE – SIMPLE EXPLANATION
+==============================
+
+git prune is used to remove unreachable (dangling) objects from Git.
+
+It means:
+"clean up internal unused Git data"
+
+
+------------------------------
+WHAT ARE UNREACHABLE OBJECTS?
+------------------------------
+
+- commits not connected to any branch or tag
+- leftover data after reset, rebase, amend
+- called "dangling objects"
+
+
+------------------------------
+IMPORTANT NOTE
+------------------------------
+
+git prune works on Git database (.git folder),
+NOT on your project files.
+
+
+------------------------------
+SYNTAX
+------------------------------
+
+git prune
+
+
+------------------------------
+SAFE USAGE (RECOMMENDED)
+------------------------------
+
+git prune --dry-run
+
+- shows what will be removed
+- does NOT delete anything
+
+
+------------------------------
+COMMON COMMANDS
+------------------------------
+
+1. Preview prune
+
+git prune --dry-run
+
+- lists dangling objects
+
+
+------------------------------
+
+2. Run prune
+
+git prune
+
+- deletes unreachable objects
+
+
+------------------------------
+
+3. Prune with expire time
+
+git prune --expire=now
+
+- removes immediately (no delay)
+
+
+------------------------------
+EXAMPLE
+------------------------------
+
+Step 1:
+Make commits
+
+A → B → C (HEAD)
+
+
+Step 2:
+Reset hard
+
+git reset --hard B
+
+Now:
+A → B (HEAD)
+
+- commit C is no longer reachable
+
+
+Step 3:
+Check dangling objects
+
+git fsck
+
+Output:
+dangling commit C
+
+
+Step 4:
+Preview prune
+
+git prune --dry-run
+
+Output:
+would prune commit C
+
+
+Step 5:
+Run prune
+
+git prune
+
+- commit C permanently deleted
+
+
+------------------------------
+REAL SCENARIO
+------------------------------
+
+After many resets, rebases, amends:
+
+- Git stores unused objects
+- increases repo size
+
+Use:
+
+git prune
+
+- clean internal storage
+
+
+------------------------------
+PRUNE vs CLEAN
+------------------------------
+
+FEATURE        | PRUNE                  | CLEAN
+--------------------------------------------------------
+Deletes         | Git internal data     | Project files
+Affects         | .git folder           | Working directory
+File safety     | Safe for files        | Deletes files
+
+
+------------------------------
+IMPORTANT
+------------------------------
+
+- prune is usually run automatically by:
+  git gc (garbage collection)
+
+- do NOT run frequently manually
+- once pruned → data cannot be recovered
+
+
+------------------------------
+SUMMARY
+------------------------------
+
+git prune --dry-run → preview cleanup
+git prune           → delete unused objects
+git gc              → auto cleanup (recommended)
+
+==============================
