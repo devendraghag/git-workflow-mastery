@@ -7,7 +7,7 @@ This repository is intended to be a clear, practical Git learning resource. Plea
 ## Ways to contribute
 
 You can help by:
-- Adding missing command guides (e.g., `git_clean`, `git_reset`, `git_commit`)
+- Adding new command guides (e.g., `git_switch`, `git_restore`, `git_remote`)
 - Correcting technical inaccuracies
 - Improving examples and real-world scenarios
 - Fixing typos, formatting, or naming consistency
@@ -56,6 +56,7 @@ Use lowercase snake-style naming:
 Examples:
 - `git_rebase.text`
 - `git_commit.text`
+- `git_cherry_pick.text`
 
 If renaming existing files, include backward-compatibility notes in the PR description.
 
