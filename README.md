@@ -83,27 +83,12 @@ After completing this repository's learning path, you should be able to:
 ## What to Add / Update Next (Prioritized Roadmap)
 
 Planned improvements:
-- **P0 (immediate):** Add mini hands-on labs in an `examples/` folder
-- **P0 (immediate):** Add quick cheat sheet in Markdown format
-- **P1 (next):** Rename `git_cheeryPick.text` to `git_cherry_pick.text` with compatibility note + README update
-- **P1 (next):** Add diagrams for merge/rebase/reflog flows
-- **P2 (later):** Add beginner quiz sections at the end of each guide (3–5 questions)
-- **P2 (later):** Add `.md` versions of guides for better GitHub rendering and discoverability
-
-For a step-by-step implementation plan, see [REPO_IMPROVEMENT_PLAN.md](./REPO_IMPROVEMENT_PLAN.md).
-
-## High-Impact Repo Upgrades (for portfolio quality)
-
-If your goal is stronger recruiter signal, prioritize:
-1. Add an `examples/` folder with 3 scenario labs:
-   - wrong-branch commit recovery
-   - accidental hard reset recovery with reflog
-   - selective hotfix with cherry-pick
-2. Add one architecture-style visual showing:
-   - working tree → staging area → commit history
-3. Add "time to complete" labels in each guide:
-   - 5 min quick read / 15 min practice
-4. Add a release tag after each milestone (for example `v1.1-doc-labs`).
+- Add mini hands-on labs in an `examples/` folder
+- Add quick cheat sheet in Markdown format
+- Rename `git_cheeryPick.text` to `git_cherry_pick.text` and keep a compatibility note
+- Add diagrams for merge/rebase/reflog flows
+- Add beginner quiz sections at the end of each guide (3–5 questions)
+- Add `.md` versions of guides for better GitHub rendering and discoverability
 
 ## Repo Quality Checklist (for contributors and maintainers)
 

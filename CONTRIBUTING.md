@@ -56,7 +56,7 @@ Use lowercase snake-style naming:
 Examples:
 - `git_rebase.text`
 - `git_commit.text`
-- `git_cheeryPick.text` *(legacy filename currently in repository)*
+- `git_cherry_pick.text`
 
 If renaming existing files, include backward-compatibility notes in the PR description and update `README.md` in the same PR.
 
