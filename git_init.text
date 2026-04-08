@@ -1,0 +1,103 @@
+### What is `git init`?
+
+`git init` is the command used to **initialize a new Git repository** in a directory.
+It creates a hidden `.git` folder that tracks all version control data (commits, branches, config, etc.).
+
+---
+
+### 🔧 Basic Syntax
+
+```bash
+git init
+```
+
+---
+
+### 📌 What happens when you run it?
+
+* A `.git/` directory is created inside your folder
+* Git starts tracking changes in that folder
+* The folder becomes a **local repository**
+
+---
+
+### ✅ Example 1: Initialize a new project
+
+```bash
+mkdir my-project
+cd my-project
+git init
+```
+
+👉 Output:
+
+```bash
+Initialized empty Git repository in /path/to/my-project/.git/
+```
+
+Now `my-project` is a Git repository.
+
+---
+
+### ✅ Example 2: Add files and make first commit
+
+```bash
+echo "Hello Git" > file.txt
+git add file.txt
+git commit -m "Initial commit"
+```
+
+👉 Explanation:
+
+* `git add` → stages the file
+* `git commit` → saves snapshot in Git history
+
+---
+
+### ✅ Example 3: Initialize existing project
+
+If you already have files:
+
+```bash
+cd existing-folder
+git init
+git add .
+git commit -m "Project initialized"
+```
+
+---
+
+### 📂 Folder structure after `git init`
+
+```
+my-project/
+ ├── .git/        ← Git internal data (important)
+ └── file.txt
+```
+
+⚠️ Never delete `.git` unless you want to remove version control.
+
+---
+
+### 🧠 Key Points (Interview Ready)
+
+* `git init` converts a normal folder into a Git repository
+* It does **not track files automatically** — you must use `git add`
+* It works for both new and existing projects
+* Creates `.git` directory which stores all history
+
+---
+
+### 💡 Pro Tip (Impress interviewer)
+
+You can initialize with a specific branch name:
+
+```bash
+git init -b main
+```
+
+This avoids default `master` branch creation.
+
+---
+
+If you want, I can help you build a **Git practice repo with real examples** to showcase in interviews.
