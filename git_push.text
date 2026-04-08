@@ -1,0 +1,162 @@
+==============================
+GIT PUSH – SIMPLE EXPLANATION
+==============================
+
+git push is used to upload your local commits to a remote repository.
+
+It means:
+"send my commits to GitHub (or remote)"
+
+
+------------------------------
+WHAT HAPPENS DURING PUSH?
+------------------------------
+
+- sends local commits to remote
+- updates remote branch
+- makes your work visible to others
+
+
+------------------------------
+SYNTAX
+------------------------------
+
+git push <remote> <branch>
+
+Example:
+git push origin main
+
+
+------------------------------
+COMMON COMMANDS
+------------------------------
+
+1. Push to default remote
+
+git push
+
+- pushes current branch to origin
+
+
+------------------------------
+
+2. Push specific branch
+
+git push origin main
+
+- pushes main branch
+
+
+------------------------------
+
+3. Push new branch (first time)
+
+git push -u origin feature1
+
+- creates branch on remote
+- sets upstream (tracking)
+
+
+------------------------------
+
+4. Push all branches
+
+git push --all
+
+- pushes all local branches
+
+
+------------------------------
+
+5. Force push (dangerous)
+
+git push --force
+
+- overwrites remote history
+
+
+------------------------------
+
+6. Safer force push
+
+git push --force-with-lease
+
+- prevents accidental overwrite
+
+
+------------------------------
+EXAMPLE
+------------------------------
+
+Local:
+
+A → B → C (HEAD)
+
+
+Remote:
+
+A → B
+
+
+------------------------------
+Step 1:
+Push changes
+
+git push origin main
+
+
+Step 2:
+Result:
+
+Remote becomes:
+
+A → B → C
+
+- commit C uploaded
+
+
+------------------------------
+FIRST TIME PUSH
+------------------------------
+
+git push -u origin main
+
+- links local branch to remote
+- next time just use:
+
+git push
+
+
+------------------------------
+REAL SCENARIO
+------------------------------
+
+After completing feature:
+
+git add .
+git commit -m "feature done"
+git push
+
+- code available on GitHub
+
+
+------------------------------
+IMPORTANT
+------------------------------
+
+- always pull before push
+- avoid force push on shared branches
+- requires internet connection
+
+
+------------------------------
+SUMMARY
+------------------------------
+
+git push                    → upload commits
+git push origin main        → push branch
+git push -u origin branch   → first push setup
+git push --all              → push all branches
+git push --force            → overwrite history
+
+==============================
