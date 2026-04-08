@@ -40,12 +40,12 @@ Each `git_*.text` file focuses on one command and follows a consistent style:
 
 ### History and recovery
 - `git_revert.text` — undo via new commit
-- `git_reset.text` — rewrite local history *(currently to be completed)*
-- `git_ammend.text` — amend last commit *(filename typo kept for compatibility; see roadmap)*
-- `git_cherryPick.text` — apply specific commit from another branch
+- `git_reset.text` — rewrite local history safely
+- `git_amend.text` — amend last commit
+- `git_cheeryPick.text` — apply specific commit from another branch *(filename typo currently kept for compatibility)*
 - `git_tag.text` — label important commits/releases
 - `git_prune.text` — clean unreachable Git objects
-- `git_clean.text` — remove untracked files *(currently to be completed)*
+- `git_clean.text` — remove untracked files safely
 
 ## Suggested Learning Path
 
@@ -62,16 +62,26 @@ If you are new to Git, follow this order:
 9. `git_cherry-pick` + `git_tag`
 10. cleanup (`git_clean`, `git_prune`)
 
+## Learning Path Outcomes
+
+After completing this repository's learning path, you should be able to:
+
+- Initialize and clone repositories with confidence
+- Track file changes, stage updates, and create clean commits
+- Work with branches for features and bug fixes
+- Sync safely with remotes using fetch, pull, and push
+- Recover from mistakes using revert, reset, stash, and amend
+- Apply targeted fixes using cherry-pick and tag important milestones
+- Clean local workspaces safely with preview-first commands
+- Choose safer options for potentially destructive Git operations
+
 ## Current Gaps / Roadmap
 
 Planned improvements:
-- Fill missing content in:
-  - `git_clean.text`
-  - `git_reset.text`
-- Rename `git_ammend.text` to `git_amend.text` (with compatibility note)
 - Add a dedicated `git_commit` guide
 - Add mini hands-on labs in an `examples/` folder
 - Add quick cheat sheet in Markdown format
+- Standardize file naming (`git_<command>.text`) and fix legacy typos with compatibility notes
 
 ## How to use this repository
 
