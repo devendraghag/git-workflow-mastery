@@ -98,4 +98,3 @@ If a bug is introduced in production:
 git revert is used to undo changes by creating a new commit without removing existing history.
 
 ---
-test
