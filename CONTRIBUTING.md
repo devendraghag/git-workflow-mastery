@@ -58,7 +58,7 @@ Examples:
 - `git_commit.text`
 - `git_cherry_pick.text`
 
-If renaming existing files, include backward-compatibility notes in the PR description.
+If renaming existing files, include backward-compatibility notes in the PR description and update `README.md` in the same PR.
 
 ## Local validation checklist
 
