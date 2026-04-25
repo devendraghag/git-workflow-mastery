@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: hms-postgres
+    environment:
+      POSTGRES_DB: hms_db
+      POSTGRES_USER: hms
+      POSTGRES_PASSWORD: hms
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: hms-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  pg_data:

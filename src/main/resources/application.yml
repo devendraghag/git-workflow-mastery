@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: housing-management
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hms_db
+    username: hms
+    password: hms
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+app:
+  jwt:
+    secret: change-this-secret-key-change-this-secret-key
+    expiration-ms: 3600000
